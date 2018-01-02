@@ -1,0 +1,4 @@
+PUT     /import/word/:sourceLanguage/:word/:targetLang/:translation     controllers.Import.importWord(sourceLanguage: play.api.i18n.Lang, word, targetLang: play.api.i18n.Lang, translation)
+
+GET     /quiz/:sourceLang/:targetLang       controllers.Quiz.quiz(sourceLang: play.api.i18n.Lang, targetLang: play.api.i18n.Lang)
+POST    /quiz/:sourceLang/check/:word       controllers.Quiz.check(sourceLang: play.api.i18n.Lang, word, targetLang: play.api.i18n.Lang, translation)
