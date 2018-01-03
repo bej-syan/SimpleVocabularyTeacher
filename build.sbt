@@ -15,7 +15,8 @@ libraryDependencies ++= Seq(
   ehcache,
   ws,
   specs2 % Test,
-  guice
+  guice,
+  filters
 )
 
 unmanagedResourceDirectories in Test <+= baseDirectory ( _ /"target/web/public/test" )
