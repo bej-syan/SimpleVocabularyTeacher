@@ -73,3 +73,20 @@ for that type and will complain if it can't find one.
 capable of handling a request (be it an HTTP or a WebSocket request).
 
 `(RequestHeader) => Accumulator[ByteString, Result]`    
+
+
+
+#### WebSockets
+
+By maintaining two-way communication with the server, WebSockets are a great tool for building interactive web apps.
+
+**Play** deals with WebSockets in a special way. 
+
+A WebSocket connection is established in two steps:
+- First, the client sends a normal `GET` request that contains a special *Upgrade* header.
+- Then, if the server supports the WebSocket protocol, it replies with the details of the WebSocket connection, and the
+client can switch to that protocol. 
+- To this end, Play doesn't make use of actions but instead uses a special type of *Handler* that will initiate the 
+WebSocket connection. 
+
+
