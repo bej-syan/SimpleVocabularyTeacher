@@ -44,3 +44,15 @@ Let the router know about the binding by adding `routesImport += "binders.PathBi
 When the Scala compiler finds a route that specifies a given type, it will try to find the appropriate `PathBindable` 
 for that type and will complain if it can't find one. 
 
+
+#### A look under the hood of `Action`s
+
+    trait Action[A] extends EssentialAction {
+      def parser: BodyParser[A]
+      def apply(request: Request[A]): Future[Result]
+    }
+    
+    trait Request[+A] extends RequestHeader {
+      def body: A
+    }
+    

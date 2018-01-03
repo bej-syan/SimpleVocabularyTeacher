@@ -11,21 +11,20 @@ class Import @Inject()(cc: ControllerComponents,
 
   import play.api.i18n.Lang
 
-  def importWord(
-                  sourceLanguage: Lang,
-                  word: String,
-                  targetLanguage: Lang,
-                  translation: String) = Action {
+  def importWord(sourceLanguage: Lang,
+                 word: String,
+                 targetLanguage: Lang,
+                 translation: String) =
+    Action {
+      val added = vocabulary.addVocabulary(
+        Vocabulary(sourceLanguage, targetLanguage, word, translation)
+      )
 
-    val added = vocabulary.addVocabulary(
-      Vocabulary(sourceLanguage, targetLanguage, word, translation)
-    )
+      if (added) {
+        Ok
+      } else {
+        Conflict
+      }
 
-    if (added) {
-      Ok
-    } else {
-      Conflict
     }
-
-  }
 }
