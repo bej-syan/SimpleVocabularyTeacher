@@ -56,3 +56,20 @@ for that type and will complain if it can't find one.
       def body: A
     }
     
+    trait EssentialAction
+        extends (RequestHeader => Accumulator[ByteString, Result]
+        with Handler
+    
+    // package play.api.mvc
+    trait RequestHeader extends AnyRef
+    
+    // package play.api.libs.streams
+    sealed trait Accumulator[-E, +A] extends AnyRef
+    
+    // package play.api.mvc
+    trait Handler extends AnyRef
+    
+`with Handler`: the *EssentialAction* is a **Handler**, which is a type used in Play to indicate that an object is 
+capable of handling a request (be it an HTTP or a WebSocket request).
+
+`(RequestHeader) => Accumulator[ByteString, Result]`    
