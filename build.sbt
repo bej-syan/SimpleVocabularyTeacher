@@ -16,7 +16,9 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   guice,
-  filters
+  filters,
+  "com.typesafe.play" %% "play-iteratees" % "2.6.1",
+  "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1"
 )
 
 unmanagedResourceDirectories in Test <+= baseDirectory ( _ /"target/web/public/test" )
