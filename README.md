@@ -80,6 +80,11 @@ capable of handling a request (be it an HTTP or a WebSocket request).
 
 By maintaining two-way communication with the server, WebSockets are a great tool for building interactive web apps.
 
+**Play**'s `WebSocket` handling mechanism is built around Akka streams. 
+
+A `WebSocket` is modeled as a `Flow`, incoming WebSocket messages are fed into the flow, and messages produced by the 
+flow are sent out to the client.
+
 **Play** deals with WebSockets in a special way. 
 
 A WebSocket connection is established in two steps:
